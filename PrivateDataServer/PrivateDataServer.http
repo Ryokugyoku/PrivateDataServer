@@ -1,0 +1,6 @@
+@PrivateDataServer_HostAddress = http://localhost:5101
+
+GET {{PrivateDataServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

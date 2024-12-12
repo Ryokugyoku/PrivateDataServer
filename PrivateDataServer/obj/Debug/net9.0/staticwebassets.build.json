@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "QxE/YhjqUwxFsVUynjxTR+BTArsnq2vY++PFPA/I3C4=",
+  "Source": "PrivateDataServer",
+  "BasePath": "_content/PrivateDataServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
