@@ -1,17 +1,19 @@
-using System.Reflection;
-using PrivateDataServer.Api.LoginModule;
-using PrivateDataServer.DB;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Sinks.PostgreSQL;
 using NpgsqlTypes;
-using PrivateDataServer.Api.UserModule.Services;
-using PrivateDataServer.Middleware;
+using PrivateDataServer.Module.DB;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using PrivateDataServer.Module.LogModule;
+using PrivateDataServer.Module.UserModule.Interface;
+namespace PrivateDataServer;
 public class Program{
-
     public static void Main(string[] args){
+        // Add services to the container.
+        // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddOpenApi();
 
         // Serilog の設定読み込み
         builder.Host.UseSerilog((context, services, configuration) => {
@@ -41,41 +43,41 @@ public class Program{
                     columnOptions: columnWriters
                 );
         });
-
+        
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
-
-        // Add services to the container.
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        
         builder.Services.AddScoped<ILoginService, LoginService>();
         builder.Services.AddScoped<IUserManagerService, UserManagerService>();
-        builder.Services.AddControllersWithViews();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen(c =>
-        {
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            c.IncludeXmlComments(xmlPath);
-        });
+
 
         var app = builder.Build();
         // カスタムミドルウェアの追加
         app.UseMiddleware<ExecUserLoggingMiddleware>();
+
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.MapOpenApi();
         }
-        app.MapControllers();
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
         app.UseRouting();
+
         app.UseAuthentication();
         app.UseAuthorization();
-        Log.Information("Application started");
+
+        app.MapControllers();
+
         app.Run();
     }
 }

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDataServer", "PrivateDataServer\PrivateDataServer.csproj", "{F4C4B4E9-94FF-4BDD-92FF-98215DC258CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDataServer", "PrivateDataServer\PrivateDataServer.csproj", "{5AF822EF-248F-40D7-A525-6EC12EA1EFFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDataServer.Tests", "PrivateDataServer.Tests\PrivateDataServer.Tests.csproj", "{0827018F-D1F8-42C4-BFB1-23A89E652D38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateDataServer.Test", "PrivateDataServer.Test\PrivateDataServer.Test.csproj", "{5698D292-F52C-479C-AF3C-8F2619595840}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +16,13 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F4C4B4E9-94FF-4BDD-92FF-98215DC258CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4C4B4E9-94FF-4BDD-92FF-98215DC258CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4C4B4E9-94FF-4BDD-92FF-98215DC258CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4C4B4E9-94FF-4BDD-92FF-98215DC258CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0827018F-D1F8-42C4-BFB1-23A89E652D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0827018F-D1F8-42C4-BFB1-23A89E652D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0827018F-D1F8-42C4-BFB1-23A89E652D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0827018F-D1F8-42C4-BFB1-23A89E652D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF822EF-248F-40D7-A525-6EC12EA1EFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF822EF-248F-40D7-A525-6EC12EA1EFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF822EF-248F-40D7-A525-6EC12EA1EFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF822EF-248F-40D7-A525-6EC12EA1EFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5698D292-F52C-479C-AF3C-8F2619595840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5698D292-F52C-479C-AF3C-8F2619595840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5698D292-F52C-479C-AF3C-8F2619595840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5698D292-F52C-479C-AF3C-8F2619595840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

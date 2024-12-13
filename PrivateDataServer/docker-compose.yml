@@ -1,6 +1,6 @@
 services:
   web:
-    image: aiwebserver
+    image: PrivateDataServer
     build:
       context: .
       dockerfile: Dockerfile

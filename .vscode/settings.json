@@ -1,0 +1,13 @@
+{
+    "omnisharp.useModernNet": true,
+    "omnisharp.path": "latest",
+    "omnisharp.enableRoslynAnalyzers": true, // Roslyn アナライザーを有効にする
+    "omnisharp.enableEditorConfigSupport": true, // インポート補完を有効にする
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": true, // 必要に応じてプロジェクトを読み込む
+    "omnisharp.loggingLevel": "information", // ログレベルを情報に設定
+    "omnisharp.autoStart": true, // OmniSharp を自動的に開始する
+    "omnisharp.projectLoadTimeout": 60, // プロジェクトの読み込みタイムアウトを設定
+    "omnisharp.maxProjectResults": 1000, // 最大プロジェクト結果数を設定
+    "omnisharp.useGlobalMono": "always", // グローバル Mono を常に使用する
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true // 未インポートの名前空間からの補完を表示する
+}
