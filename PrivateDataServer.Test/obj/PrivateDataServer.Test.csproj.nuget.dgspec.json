@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj": {}
+    "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj": {}
   },
   "projects": {
-    "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj": {
+    "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj",
+        "projectUniqueName": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj",
         "projectName": "PrivateDataServer.Test",
-        "projectPath": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj",
+        "projectPath": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer.Test/PrivateDataServer.Test.csproj",
         "packagesPath": "/Users/maedamitsuhiro/.nuget/packages/",
-        "outputPath": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/obj/",
+        "outputPath": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer.Test/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/maedamitsuhiro/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj": {
-                "projectPath": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj"
+              "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj": {
+                "projectPath": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj"
               }
             }
           }
@@ -101,14 +101,14 @@
         }
       }
     },
-    "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj": {
+    "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj",
+        "projectUniqueName": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj",
         "projectName": "PrivateDataServer",
-        "projectPath": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj",
+        "projectPath": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/PrivateDataServer.csproj",
         "packagesPath": "/Users/maedamitsuhiro/.nuget/packages/",
-        "outputPath": "/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/obj/",
+        "outputPath": "/Users/maedamitsuhiro/Documents/書類 - 前田光博のMacBook Pro - 1/PrivateDataServer/PrivateDataServer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/maedamitsuhiro/.nuget/NuGet/NuGet.Config"
@@ -184,6 +184,10 @@
             "Serilog.Sinks.PostgreSQL": {
               "target": "Package",
               "version": "[2.3.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[7.2.0, )"
             },
             "Testcontainers.PostgreSql": {
               "target": "Package",

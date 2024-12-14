@@ -21,19 +21,18 @@ public class RegisterApiTest : IClassFixture<WebApplicationFactory<Program>>
 
     public RegisterApiTest(WebApplicationFactory<Program> factory)
     {
+        Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
         _factory = factory;
         _postgresContainer = new PostgreSqlBuilder()
-            .WithDatabase("mydatabase")
-            .WithUsername("myusername")
-            .WithPassword("mypassword")
-            .WithPortBinding(5432)
+            .WithDatabase("autotest")
+            .WithUsername("test")
+            .WithPassword("test")
+            .WithPortBinding(6543)
             .WithHostname("localhost")
             .Build();
 
             // コンテナの開始
          _postgresContainer.StartAsync().GetAwaiter().GetResult();
-        // コンテナが完全に起動するまで待機
-        Task.Delay(5000).Wait();
         _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
@@ -43,18 +42,6 @@ public class RegisterApiTest : IClassFixture<WebApplicationFactory<Program>>
                 {
                     options.UseNpgsql(_postgresContainer.GetConnectionString());
                 });
-
-                // サービスプロバイダーを構築
-                var serviceProvider = services.BuildServiceProvider();
-
-                // データベースを初期化
-                using (var scope = serviceProvider.CreateScope())
-                {
-                    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                    dbContext.Database.EnsureDeleted(); // 既存のデータベースを削除
-                    dbContext.Database.EnsureCreated(); // 新しいデータベースを作成
-                    dbContext.Database.Migrate();//マイグレーションを実施
-                }
             });
         });
 

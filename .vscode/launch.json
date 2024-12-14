@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "ASP.NET DeBugMode",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/PrivateDataServer/bin/Debug/net9.0/PrivateDataServer.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/PrivateDataServer",
+        "stopAtEntry": false,
+        "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        },
+        "sourceFileMap": {
+          "/Views": "${workspaceFolder}/Views"
+        },
+        "launchBrowser": {
+          "enabled": true,
+          "args": "${auto-detect-url}",
+          "windows": {
+            "command": "cmd.exe",
+            "args": "/C start ${auto-detect-url}"
+          },
+          "osx": {
+            "command": "open"
+          },
+          "linux": {
+            "command": "xdg-open"
+          }
+        }
+      }
+    ]
+  }

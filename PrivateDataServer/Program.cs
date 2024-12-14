@@ -12,8 +12,13 @@ public class Program{
         // Add services to the container.
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Configuration
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+            .AddEnvironmentVariables();
         builder.Services.AddOpenApi();
+        builder.Services.AddSwaggerGen(); // Swaggerのサービスを追加
 
         // Serilog の設定読み込み
         builder.Host.UseSerilog((context, services, configuration) => {
@@ -65,6 +70,15 @@ public class Program{
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
+            //詳細なエラーが出るようにする。
+            app.UseDeveloperExceptionPage();
+            //Swaggerの設定
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "PrivateDataServer v1");
+                    c.RoutePrefix = string.Empty; // Swagger UIをルートに設定
+                });
             app.MapOpenApi();
         }
 

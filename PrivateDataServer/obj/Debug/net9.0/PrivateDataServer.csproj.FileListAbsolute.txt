@@ -1,5 +1,6 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/appsettings.Development.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/appsettings.json
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/appsettings.Test.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/PrivateDataServer.staticwebassets.endpoints.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/PrivateDataServer
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/PrivateDataServer.deps.json
@@ -42,6 +43,9 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/Serilog.Sinks.PostgreSQL.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/ICSharpCode.SharpZipLib.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/Renci.SshNet.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/System.CodeDom.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/System.Composition.AttributedModel.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer/bin/Debug/net9.0/System.Composition.Convention.dll

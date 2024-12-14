@@ -4,6 +4,7 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/PrivateDataServer.runtimeconfig.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/appsettings.Development.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/appsettings.json
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/appsettings.Test.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/PrivateDataServer.staticwebassets.endpoints.json
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/PrivateDataServer
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/MvcTestingAppManifest.json
@@ -316,6 +317,8 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/refs/System.Xml.XPath.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/refs/System.Xml.XPath.XDocument.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/refs/WindowsBase.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Docker.DotNet.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Docker.DotNet.X509.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Microsoft.AspNetCore.Mvc.Testing.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
@@ -349,6 +352,13 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Serilog.Sinks.File.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Serilog.Sinks.PeriodicBatching.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Serilog.Sinks.PostgreSQL.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/ICSharpCode.SharpZipLib.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Renci.SshNet.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Testcontainers.dll
+/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Testcontainers.PostgreSql.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/xunit.abstractions.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/xunit.assert.dll
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/xunit.core.dll
@@ -434,9 +444,3 @@
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/obj/Debug/net9.0/PrivateDataServer.Test.pdb
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/obj/Debug/net9.0/PrivateDataServer.Test.genruntimeconfig.cache
 /Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/obj/Debug/net9.0/ref/PrivateDataServer.Test.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Docker.DotNet.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Docker.DotNet.X509.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/ICSharpCode.SharpZipLib.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Renci.SshNet.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Testcontainers.dll
-/Users/maedamitsuhiro/Documents/PrivateDataServer/PrivateDataServer.Test/bin/Debug/net9.0/Testcontainers.PostgreSql.dll

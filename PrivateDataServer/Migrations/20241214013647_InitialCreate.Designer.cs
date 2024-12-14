@@ -12,7 +12,7 @@ using PrivateDataServer.Module.DB;
 namespace PrivateDataServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241213144643_InitialCreate")]
+    [Migration("20241214013647_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

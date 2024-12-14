@@ -1,0 +1,10 @@
+{
+    "profiles": {
+      "PrivateDataServer.Test": {
+        "commandName": "Project",
+        "environmentVariables": {
+          "ASPNETCORE_ENVIRONMENT": "Test",
+        }
+      }
+    }
+  }
