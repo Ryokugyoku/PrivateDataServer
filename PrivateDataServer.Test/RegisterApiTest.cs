@@ -27,12 +27,14 @@ public class RegisterApiTest : IClassFixture<WebApplicationFactory<Program>>
             .WithDatabase("autotest")
             .WithUsername("test")
             .WithPassword("test")
-            .WithPortBinding(6543)
+            //ホストのポート番号、コンテナのポート番号
+            .WithPortBinding(6543,5432)
             .WithHostname("localhost")
             .Build();
 
             // コンテナの開始
          _postgresContainer.StartAsync().GetAwaiter().GetResult();
+         Console.WriteLine("PostgreSQL Container Connection String: " + _postgresContainer.GetConnectionString());
         _factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>

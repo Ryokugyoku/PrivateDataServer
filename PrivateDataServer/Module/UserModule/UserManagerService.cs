@@ -14,6 +14,11 @@ public class UserManagerService : IUserManagerService
 
     public async Task<IdentityResult> CreateUserAsync(CreateUserRequest request)
     {
+        var errors = CreateUserNullCheck(request);
+        if(errors.Any()){
+            return IdentityResult.Failed(errors.ToArray());
+        }
+
         var user = new IdentityUser { UserName = request.Email, Email = request.Email };
         var result = await _userManager.CreateAsync(user, request.Password);
         return result;
@@ -81,4 +86,26 @@ public class UserManagerService : IUserManagerService
         }
         return isUser;
     }
+
+    private List<IdentityError> CreateUserNullCheck(CreateUserRequest request)
+    {
+        var errors = new List<IdentityError>();
+
+        // 入力値の検証
+        if (string.IsNullOrEmpty(request.UserName))
+        {
+            errors.Add(new IdentityError { Description = "UserName cannot be null or empty." });
+        }
+        if (string.IsNullOrEmpty(request.Email))
+        {
+            errors.Add(new IdentityError { Description = "Email cannot be null or empty." });
+        }
+        if (string.IsNullOrEmpty(request.Password))
+        {
+            errors.Add(new IdentityError { Description = "Password cannot be null or empty." });
+        }
+
+        return errors;
+    }
+
 }
