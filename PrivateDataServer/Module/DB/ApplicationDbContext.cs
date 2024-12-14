@@ -8,7 +8,6 @@ namespace PrivateDataServer.Module.DB;
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            this.Database.Migrate();
             // データベースが存在しない場合にのみマイグレーションを実行
             if (Database.GetPendingMigrations().Any())
             {
