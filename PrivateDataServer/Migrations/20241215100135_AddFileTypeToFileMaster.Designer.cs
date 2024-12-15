@@ -12,8 +12,8 @@ using PrivateDataServer.Module.DB;
 namespace PrivateDataServer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241214013647_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241215100135_AddFileTypeToFileMaster")]
+    partial class AddFileTypeToFileMaster
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -219,6 +219,44 @@ namespace PrivateDataServer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("PrivateDataServer.Module.DB.Entities.FileMasterEntity", b =>
+                {
+                    b.Property<Guid>("FileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("file_id")
+                        .HasDefaultValueSql("uuid_generate_v4()");
+
+                    b.Property<DateTime>("CreateDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("create_date")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("CreateUser")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("create_user");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("file_name");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("file_path");
+
+                    b.Property<int>("FileType")
+                        .HasColumnType("integer")
+                        .HasColumnName("file_type");
+
+                    b.HasKey("FileId");
+
+                    b.ToTable("file_master", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
