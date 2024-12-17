@@ -1,6 +1,6 @@
 services:
   web:
-    image: PrivateDataServer
+    image: privatedataserver
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=db;Database=mydatabase;Username=myusername;Password=mypassword
-
+      - ASPNETCORE_URLS=http://+:80
   db:
     image: postgres:latest
     environment:
