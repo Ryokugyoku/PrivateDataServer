@@ -48,7 +48,17 @@ public class Program{
                     columnOptions: columnWriters
                 );
         });
-        
+        builder.Services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost","https://localhost","http://localhost:5173")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+        });
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         
@@ -66,7 +76,7 @@ public class Program{
         var app = builder.Build();
         // カスタムミドルウェアの追加
         app.UseMiddleware<ExecUserLoggingMiddleware>();
-
+        app.UseCors();
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
