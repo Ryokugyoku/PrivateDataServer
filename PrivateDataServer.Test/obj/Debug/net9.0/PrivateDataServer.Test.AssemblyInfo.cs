@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrivateDataServer.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a62def564d5436c7ef00a2e4841299c1fe2d44db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c3dc55c5de8e1a9363642a6621069d0870be186")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrivateDataServer.Test")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrivateDataServer.Test")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
