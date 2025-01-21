@@ -8,56 +8,78 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using PrivateDataServer.Module.DB;
 using PrivateDataServer.Module.Request;
 using Testcontainers.PostgreSql;
+using System.Threading;
 
 /// <summary>
 /// アカウント作成APIテスト
 /// </summary>
-public class RegisterApiTest : IClassFixture<WebApplicationFactory<Program>>
+public class RegisterApiTestFixture : IDisposable
 {
-    private readonly WebApplicationFactory<Program> _factory;
-    private readonly HttpClient _client;
+    public WebApplicationFactory<Program> Factory { get; }
+    public HttpClient Client { get; }
+    public PostgreSqlContainer PostgresContainer { get; }
 
-    private readonly PostgreSqlContainer _postgresContainer;
-
-    public RegisterApiTest(WebApplicationFactory<Program> factory)
+    public RegisterApiTestFixture()
     {
         Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
-        _factory = factory;
-        _postgresContainer = new PostgreSqlBuilder()
+        Factory = new WebApplicationFactory<Program>();
+        PostgresContainer = new PostgreSqlBuilder()
             .WithDatabase("autotest")
             .WithUsername("test")
             .WithPassword("test")
-            //ホストのポート番号、コンテナのポート番号
-            .WithPortBinding(6543,5432)
+            .WithPortBinding(6543,5432) // この行を削除
             .WithHostname("localhost")
             .Build();
 
-            // コンテナの開始
-         _postgresContainer.StartAsync().GetAwaiter().GetResult();
-         Console.WriteLine("PostgreSQL Container Connection String: " + _postgresContainer.GetConnectionString());
-        _factory.WithWebHostBuilder(builder =>
+        // コンテナの開始
+        PostgresContainer.StartAsync().GetAwaiter().GetResult();
+        Console.WriteLine("PostgreSQL Container Connection String: " + PostgresContainer.GetConnectionString());
+
+        // 接続文字列の取得
+        var connectionString = PostgresContainer.GetConnectionString();
+
+        Factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>
             {
                 // PostgreSQL データベースプロバイダーを登録
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    options.UseNpgsql(_postgresContainer.GetConnectionString());
+                    options.UseNpgsql(connectionString);
                 });
             });
         });
 
         // アプリケーションの起動を待つ
-        _client = _factory.CreateClient();
+        Client = Factory.CreateClient();
     }
-    
+
+    public void Dispose()
+    {
+        Client.Dispose();
+        Factory.Dispose();
+        PostgresContainer.DisposeAsync().GetAwaiter().GetResult();
+    }
+}
+
+/// <summary>
+/// アカウント作成APIテスト
+/// </summary>
+public class RegisterApiTest : IClassFixture<RegisterApiTestFixture>
+{
+    private readonly RegisterApiTestFixture _fixture;
+
+    public RegisterApiTest(RegisterApiTestFixture fixture)
+    {
+        _fixture = fixture;
+    }
+
     /// <summary>
-    /// 入出力テスト
+    /// 正常入力値のテスト
     /// </summary>
     [Fact]
-    public async Task InputColumnTest()
+    public async Task InputColumnTest1()
     {
-        //正常入力値
         var request = new CreateUserRequest
         {
             UserName = "TestUser",
@@ -66,97 +88,133 @@ public class RegisterApiTest : IClassFixture<WebApplicationFactory<Program>>
         };
         var json = JsonSerializer.Serialize(request);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+    }
 
-        //Emailがnull
-        request = new CreateUserRequest
+    /// <summary>
+    /// Emailがnullのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest2()
+    {
+        var request = new CreateUserRequest
         {
             UserName = "TestUser",
             Email = null,
             Password = "Test@123"
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 
-        //Passwordがnull
-        request = new CreateUserRequest
+    /// <summary>
+    /// Passwordがnullのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest3()
+    {
+        var request = new CreateUserRequest
         {
             UserName = "TestUser",
             Email = "Test@mail.com",
             Password = null
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 
-        //UserNameがnull
-        request = new CreateUserRequest
+    /// <summary>
+    /// UserNameがnullのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest4()
+    {
+        var request = new CreateUserRequest
         {
             UserName = null,
             Email = "Test@mail.com",
             Password = "Test@123"
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 
-        //全てがnull
-        request = new CreateUserRequest
+    /// <summary>
+    /// 全てがnullのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest5()
+    {
+        var request = new CreateUserRequest
         {
             UserName = null,
             Email = null,
             Password = null
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 
-        //Emailだけのとき
-        request = new CreateUserRequest
+    /// <summary>
+    /// Emailだけのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest6()
+    {
+        var request = new CreateUserRequest
         {
             UserName = null,
             Email = "Test@test.com",
             Password = null
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        //UserNameだけのとき
-        request = new CreateUserRequest
+    }
+
+    /// <summary>
+    /// UserNameだけのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest7()
+    {
+        var request = new CreateUserRequest
         {
             UserName = "test",
             Email = null,
             Password = null
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+    }
 
-        //passwordだけのとき
-        request = new CreateUserRequest
+    /// <summary>
+    /// Passwordだけのテスト
+    /// </summary>
+    [Fact]
+    public async Task InputColumnTest8()
+    {
+        var request = new CreateUserRequest
         {
             UserName = null,
             Email = null,
             Password = "test"
         };
-
-        json = JsonSerializer.Serialize(request);
-        content = new StringContent(json, Encoding.UTF8, "application/json");
-        response = await _client.PostAsync("/api/UserManager/CreateUser", content);
+        var json = JsonSerializer.Serialize(request);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        var response = await _fixture.Client.PostAsync("/api/UserManager/CreateUser", content);
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
 }
